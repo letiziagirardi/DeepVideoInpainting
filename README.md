@@ -67,7 +67,15 @@ Using the obtained variances we defined a score with which we built a ROC: a gra
   RESULTS: We are already able to distinguish TCN processed frames from the not processed ones with a TPR≈0.75 and a FPR≈0.05. 
 
 
-## WORKING ON STEP #4
+## ✅ STEP #4
 
-At this point we try to train the network HPFCN with new residual obtained in step #3. The residuals consist of just high frequencies. We expect that the network, working on high frequencies, is able to detect the removed object in a better way. 
+At this point we try to train the network HPFCN with new residual obtained in step #3. The residuals consist of just high frequencies. We expect that the network, working on high frequencies, is able to localize the removed object in a better way. 
+   RESULTS: Unfortunately, the results are not good as well we expected. The objects are not recognized and the mean of the F1-score value is 0.30. Definitely bad. This part will not be examined in depth in my thesis.
+
+
+### WORKING ON STEP #5
+
+Once detected video inpainted by using TCN from video inpainted without the usage of TCN technique, we try to understand which specific technique has been used in inpainting process (i.e. OPN, GMCNN and STTN ). To do this, we have to model a classifier.
+
+Aware of the better results of localization maps products from the testing of HP-FCN on the same technique it was trained on, we build three statistical models to classify the three inpainting techniques starting from the localization maps.
 
