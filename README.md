@@ -82,6 +82,7 @@ Aware of the better results of localization maps products from the testing of HP
 For each frame of the test videos V, we compute medium values of
 * pixels of each localization maps with value greater or equal than 0.5
 * pixels of each localization maps with value less than 0.5
+
 and we estimate its likelihood w.r.t each distribution.
 The distribution model with the **maximum likelihood** receives a score equals to the likelihood value of that frame. Once analysed every frame, the video is classified using the **majority voting criteria**. 
 
