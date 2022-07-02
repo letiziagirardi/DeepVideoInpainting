@@ -70,6 +70,7 @@ Using the obtained variances we defined a score with which we built a ROC: a gra
 ## ✅ STEP #4
 
 At this point we try to train the network HPFCN with new residual obtained in step #3. The residuals consist of just high frequencies. We expect that the network, working on high frequencies, is able to localize the removed object in a better way. 
+   
    RESULTS: Unfortunately, the results are not good as well we expected. The objects are not recognized and the mean of the F1-score value is 0.30. Definitely bad. This part will not be examined in depth in my thesis.
 
 
