@@ -58,8 +58,8 @@ Studing how videos inpainted and post-processed with TCN look like.
 From the results of the previous experiments it was clear the adversarial effect that deep learning based post-processing techniques have on multimedia forensics tasks as the one of this report. Knowing that TCN was implemented, we choose to start to analyse if any artefacts were visible in the Fast Fourier Transform (FFT) Domain.
 
 We computed the FFT of frames processed and not with TCN by applying the FFT to each channel of every frame and computing their real part. Thus, the real parts of the FFT compute per-every channel have been concatenated so that to obtain a 3 channel FFT transform as the ones of Figure 4. From the results of Figure 4 we can infer few things:
-• when applied TCN introduced distinguishable artefacts on the FFT high frequencies;
-• these artefacts are less prominent in presence of highly textured frames;
+* when applied TCN introduced distinguishable artefacts on the FFT high frequencies;
+* these artefacts are less prominent in presence of highly textured frames;
 
 In addition to this, when we isolate the high frequencies at the center of the FFT transforms with a circumference of radii equals at 50 pixels, we can observe in the residuals that TCN reduced consistently the amount of high frequencies sources (edge, textures, etc.) and that, the distribution of the variances of these residuals change consistently. 
 
@@ -77,5 +77,11 @@ At this point we try to train the network HPFCN with new residual obtained in st
 
 Once detected video inpainted by using TCN from video inpainted without the usage of TCN technique, we try to understand which specific technique has been used in inpainting process (i.e. OPN, GMCNN and STTN ). To do this, we have to model a classifier.
 
-Aware of the better results of localization maps products from the testing of HP-FCN on the same technique it was trained on, we build three statistical models to classify the three inpainting techniques starting from the localization maps.
+Aware of the better results of localization maps products from the testing of HP-FCN on the same technique it was trained on, we build three statistical models to classify the three inpainting techniques starting from the localization maps. 
+
+For each frame of the test videos V, we compute medium values of
+* pixels of each localization maps with value greater or equal than 0.5
+* pixels of each localization maps with value less than 0.5
+and we estimate its likelihood w.r.t each distribution.
+The distribution model with the **maximum likelihood** receives a score equals to the likelihood value of that frame. Once analysed every frame, the video is classified using the **majority voting criteria**. 
 
