@@ -90,6 +90,7 @@ The distribution model with the **maximum likelihood** receives a score equals t
 ##  ✅ STEP #6
 
 Analyzing the designed residuals, we noticed that the variance of each channel RGB is numerically different from one another, in contrast to the distribution of variances in case of a not post-processed one, where the distributions are quite similar. This intuition enabled us to perform a preliminary classification of post-processed frames comparing them with not post-processed ones. The TCN score consist in looking at each residual I and computing 
+
 <img width="119" alt="Schermata 2022-09-05 alle 08 43 04" src="https://user-images.githubusercontent.com/71395970/188381524-652a1b98-ee42-4c11-a5cf-cd91c617d2f4.png">
 
 ## ✅ STEP #7
