@@ -74,7 +74,7 @@ At this point we try to train the network HPFCN with new residual obtained in st
    RESULTS: Unfortunately, the results are not good as well we expected. The objects are not recognized and the mean of the F1-score value is 0.30. Definitely bad. This part will not be examined in depth in my thesis.
 
 
-### WORKING ON STEP #5
+## ✅ STEP #5
 
 Once detected video inpainted by using TCN from video inpainted without the usage of TCN technique, we try to understand which specific technique has been used in inpainting process (i.e. OPN, GMCNN and STTN ). To do this, we have to model a classifier.
 
@@ -87,3 +87,13 @@ For each frame of the test videos V, we compute medium values of
 and we estimate its likelihood w.r.t each distribution.
 The distribution model with the **maximum likelihood** receives a score equals to the likelihood value of that frame. Once analyzed every frame, the video is classified using the **majority voting criteria**. 
 
+##  ✅ STEP #6
+
+Analyzing the designed residuals, we noticed that the variance of each channel RGB is numerically different from one another, in contrast to the distribution of variances in case of a not post-processed one, where the distributions are quite similar. This intuition enabled us to perform a preliminary classification of post-processed frames comparing them with not post-processed ones. The TCN score consist in looking at each residual I and computing 
+<img width="119" alt="Schermata 2022-09-05 alle 08 43 04" src="https://user-images.githubusercontent.com/71395970/188381524-652a1b98-ee42-4c11-a5cf-cd91c617d2f4.png">
+
+## ✅ STEP #7
+
+In the end, the classifier has been updated to recognize if a video is pristine or not. For this goal, we computed a score by looking at each localization maps of each video frame. Specifically we computed the average of numeber of pixels with value greather than 0.5. Thus, if the average of pixels coming from the localization map with a value grater than 0.5 is lower than a computed threshold $tau_{prist}$, the video is labeled as “pristine”.
+
+Finally, by implementing a majority voting criterion by looking at each score evaluated on each frame, the classifier is able to recognize a manipulated video and detect the inpainting technique used.
